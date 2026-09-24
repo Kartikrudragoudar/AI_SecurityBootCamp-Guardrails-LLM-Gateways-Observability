@@ -149,3 +149,48 @@ rails_exp4 = LLMRails(config=config_exp2, llm=cast(Any, guard_llm))
 # chat(rails_exp4, "What are best practices for securing a Kubernetes cluster?")
 # chat(rails_exp4, "How do I implement NetworkPolicy in Kubernetes?")
 
+# EXPERIMENT 5 — Dialog Rails: Control the Conversation Flow
+
+COLANG_EXP5 = COLANG_EXP4 + """
+    define user express greeting
+        \"hello\"
+        \"hi\"
+        \"hey\"
+        \"help\"
+        \"good morning\"
+        \"good afternoon\"
+        \"good evening\"
+
+    define bot express greeting
+        \"Hello! I'm your Enterprise IT Assistant. I specialise in Kubernetes, Intel hardware, and enterprise networking. What can I help you with today?\"
+
+    define flow capabilities
+        user express greeting
+        bot express greeting
+    
+    define user express farewell
+        \"bye\"
+        \"goodbye\"
+        \"See you later\"
+        \"Thank you\"
+        \"Thats it all\"
+        \"I am Done\"
+    
+    define bot express farewell
+        \"Goodbye! Feel free to return whenever you have more enterprise IT questions. Have a great day!\"
+
+    define flow farewell
+        user express farewell
+        bot express farewell
+"""
+
+config_exp5 = RailsConfig.from_content(
+    colang_content=COLANG_EXP5,
+    yaml_content=YAML_BASE
+)   
+
+rails_exp5 = LLMRails(config=config_exp5, llm=cast(Any, guard_llm))
+chat(rails_exp5, "Hey!")
+chat(rails_exp5, "What can you help me with?")
+chat(rails_exp5, "How does a Kubernetes DaemonSet work?")
+chat(rails_exp5, "Thanks, bye!")
