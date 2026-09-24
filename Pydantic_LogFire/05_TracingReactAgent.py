@@ -26,12 +26,12 @@ DOCS = [
 
 embeddings = GoogleGenerativeAIEmbeddings(
     model="gemini-embedding-001",
-    api_key=os.getenv("GEMINI_API_KEY")
+    api_key=os.getenv("GEMINI_API_KEY") 
 )
 
 llm_groq = ChatOpenAI(
     base_url="https://api.groq.com/openai/v1",
-    api_key=os.getenv("GROQ_API_KEY"),
+    api_key=os.getenv("GROQ_API_KEY"), 
     model="qwen/qwen3.8-27b",
     temperature=0.3
 )

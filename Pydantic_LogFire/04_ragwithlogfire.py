@@ -24,14 +24,14 @@ print(f"loaded {len(DOCS)} documents: {[d.metadata["topic"] for d in DOCS]}")
 
 llm_groq = ChatOpenAI(
     base_url="https://api.groq.com/openai/v1",
-    api_key=os.getenv("GROQ_API_KEY"),
+    api_key=os.getenv("GROQ_API_KEY"), 
     model="qwen/qwen3.8-27b",
     temperature=0.3
 )
 
 embeddings = GoogleGenerativeAIEmbeddings(
     model="gemini-embedding-001",
-    api_key=os.getenv("GEMINI_API_KEY")
+    api_key=os.getenv("GEMINI_API_KEY") 
 )
 
 vectorstore = FAISS.from_documents(DOCS, embeddings)

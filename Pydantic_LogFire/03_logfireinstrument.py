@@ -28,7 +28,7 @@ llm_groq = ChatOpenAI(
 
 llm_gemini = ChatOpenAI(
     base_url="https://generativelanguage.googleapis.com/v1beta/openai/",
-    api_key=os.getenv("GEMINI_API_KEY"),
+    api_key=os.getenv("GEMINI_API_KEY"), # type: ignore
     model="gemini-3.5-flash-lite",
     temperature=0.3
 )
