@@ -768,6 +768,15 @@ wheels = [
 ]
 
 [[package]]
+name = "dacite"
+version = "1.9.2"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/55/a0/7ca79796e799a3e782045d29bf052b5cde7439a2bbb17f15ff44f7aacc63/dacite-1.9.2.tar.gz", hash = "sha256:6ccc3b299727c7aa17582f0021f6ae14d5de47c7227932c47fec4cdfefd26f09", size = 22420, upload-time = "2025-02-05T09:27:29.757Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/94/35/386550fd60316d1e37eccdda609b074113298f23cef5bddb2049823fe666/dacite-1.9.2-py3-none-any.whl", hash = "sha256:053f7c3f5128ca2e9aceb66892b1a3c8936d02c686e707bee96e19deef4bc4a0", size = 16600, upload-time = "2025-02-05T09:27:24.345Z" },
+]
+
+[[package]]
 name = "dataclasses-json"
 version = "0.6.7"
 source = { registry = "https://pypi.org/simple" }
@@ -2219,7 +2228,9 @@ dependencies = [
     { name = "presidio-analyzer" },
     { name = "presidio-anonymizer" },
     { name = "python-dotenv" },
+    { name = "requests" },
     { name = "streamlit" },
+    { name = "tensorzero" },
 ]
 
 [package.metadata]
@@ -2249,7 +2260,9 @@ requires-dist = [
     { name = "presidio-analyzer", specifier = ">=2.2.364" },
     { name = "presidio-anonymizer", specifier = ">=2.2.364" },
     { name = "python-dotenv", specifier = ">=1.2.3" },
+    { name = "requests", specifier = ">=2.34.2" },
     { name = "streamlit", specifier = ">=1.62.0" },
+    { name = "tensorzero", specifier = ">=2026.6.0" },
 ]
 
 [[package]]
@@ -4813,6 +4826,26 @@ source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/47/c6/ee486fd809e357697ee8a44d3d69222b344920433d3b6666ccd9b374630c/tenacity-9.1.4.tar.gz", hash = "sha256:adb31d4c263f2bd041081ab33b498309a57c77f9acf2db65aadf0898179cf93a", size = 49413, upload-time = "2026-02-07T10:45:33.841Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/d7/c1/eb8f9debc45d3b7918a32ab756658a0904732f75e555402972246b0b8e71/tenacity-9.1.4-py3-none-any.whl", hash = "sha256:6095a360c919085f28c6527de529e76a06ad89b23659fa881ae0649b867a9d55", size = 28926, upload-time = "2026-02-07T10:45:32.24Z" },
+]
+
+[[package]]
+name = "tensorzero"
+version = "2026.6.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "dacite" },
+    { name = "httpx" },
+    { name = "typing-extensions" },
+    { name = "uuid-utils" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/34/25/932f78db3755656a969f0c023b65742f501a3763a6ba9b5f6ac231ba580e/tensorzero-2026.6.0.tar.gz", hash = "sha256:d27d4b79c412c888d1edf0d0a9ec99a664976a63cb4e6568a35e3e2529990784", size = 2254150, upload-time = "2026-06-04T15:54:03.621Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/ee/e8/a791e45a9dc5c258613c46b7d8438fe6df25942ccebc2abf609a822acd0e/tensorzero-2026.6.0-cp310-abi3-macosx_11_0_arm64.whl", hash = "sha256:7a99799e9a3a924984573ace1e16e2ac56c28888c30290be48b7ea7423390b55", size = 38409029, upload-time = "2026-06-04T15:53:52.609Z" },
+    { url = "https://files.pythonhosted.org/packages/23/1f/002bcca5eaebba838a247e269adc21d5f8f644cd5619b976168b2be8d032/tensorzero-2026.6.0-cp310-abi3-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:3db2adf01b0737800966a4e1be592eb5e57ffc7549658263d3d97a7a45ed107f", size = 41388155, upload-time = "2026-06-04T15:53:43.392Z" },
+    { url = "https://files.pythonhosted.org/packages/d1/3d/6b99b1992c7031753825cad1fa9623d09820135bef9a8ab93524b2862b4a/tensorzero-2026.6.0-cp310-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:e23151baa7d3841808354d2517750b786cfa7680336e7762ece67e8fa185ba68", size = 42159986, upload-time = "2026-06-04T15:53:48.059Z" },
+    { url = "https://files.pythonhosted.org/packages/dc/df/d66c5832c4cd77f2d700691072c5ea84c1539b5e7b7867e972de981b426d/tensorzero-2026.6.0-cp310-abi3-musllinux_1_2_aarch64.whl", hash = "sha256:4539c846b68b62957fc76ba64df154b1c00d0a5d206e1b7b2a8ee2dc8a7b8b2a", size = 41556362, upload-time = "2026-06-04T15:53:56.763Z" },
+    { url = "https://files.pythonhosted.org/packages/b1/82/3e26232f7bcd9b0a16a6090b5227cde743b8aeaebe0750bb68c4eb9e9f26/tensorzero-2026.6.0-cp310-abi3-musllinux_1_2_x86_64.whl", hash = "sha256:50f8c6bd6ecf321d2cc94596d47d8e749fbf9e08ae0baa75ee024eb72605f9f4", size = 42497066, upload-time = "2026-06-04T15:54:00.434Z" },
+    { url = "https://files.pythonhosted.org/packages/4a/20/b4b0194315095193a92f4930469248e2e184c96ec4b06070333aa2fa3bea/tensorzero-2026.6.0-cp310-abi3-win_amd64.whl", hash = "sha256:832b46d04de255a9ef0ca5f5db3e33d75c6bc31fa33cd15efccb0e81ada8d2d1", size = 37423961, upload-time = "2026-06-04T15:54:08.055Z" },
 ]
 
 [[package]]

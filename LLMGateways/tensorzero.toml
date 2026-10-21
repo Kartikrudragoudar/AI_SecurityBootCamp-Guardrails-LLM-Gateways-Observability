@@ -1,0 +1,34 @@
+[gateway]
+bind_address = "0.0.0.0:3000"
+global_outbound_http_timeout_ms = 120000
+
+# Define models — routing list acts as fallback order (try first, then second)
+[models.my_llm_model]
+routing = ["google_ai_studio_gemini", "groq"]
+
+[models.my_llm_model.providers.google_ai_studio_gemini]
+type = "google_ai_studio_gemini"
+model_name = "gemini-3.8-flash"
+
+[models.my_llm_model.providers.groq]
+type = "groq"
+model_name = "openai/gpt-oss-120b"
+
+
+# --- SUMMARIZE FUNCTION ---
+[functions.summarize]
+type = "chat"
+
+[functions.summarize.variants.default]
+type = "chat_completion"
+model = "my_llm_model"
+system_template = "summarize_system.minijinja"
+
+
+# --- CHAT FUNCTION ---
+[functions.chat]
+type = "chat"
+
+[functions.chat.variants.default]
+type = "chat_completion"
+model = "my_llm_model"

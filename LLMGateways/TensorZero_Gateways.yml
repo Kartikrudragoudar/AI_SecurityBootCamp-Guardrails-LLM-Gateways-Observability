@@ -1,0 +1,50 @@
+services:
+  clickhouse:
+    image: clickhouse/clickhouse-server:latest
+    ports:
+      - "8123:8123"
+      - "9000:9000"
+    environment:
+      CLICKHOUSE_USER: default
+      CLICKHOUSE_PASSWORD: default
+      CLICKHOUSE_DB: tensorzero
+    volumes:
+      - clickhouse_data:/var/lib/clickhouse
+    healthcheck:
+      test: ["CMD", "clickhouse-client", "--query", "SELECT 1"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+  tensorzero-gateway:
+    image: tensorzero/gateway:latest
+    pull_policy: always
+    ports:
+      - "3000:3000"
+    environment:
+      GROQ_API_KEY: ${GROQ_API_KEY}
+      GOOGLE_AI_STUDIO_API_KEY: ${GEMINI_API_KEY}
+      TENSORZERO_CLICKHOUSE_URL: http://default:default@clickhouse:8123/tensorzero
+    volumes:
+      - ./tensorzero.toml:/app/config/tensorzero.toml:ro
+      - ./summarize_system.minijinja:/app/config/summarize_system.minijinja:ro
+    command: ["--config-file", "/app/config/tensorzero.toml"]
+    depends_on:
+      clickhouse:
+        condition: service_healthy
+    restart: unless-stopped
+
+  tensorzero-ui:
+    image: tensorzero/ui:latest
+    ports:
+      - "4000:4000"
+    environment:
+      TENSORZERO_GATEWAY_URL: http://tensorzero-gateway:3000
+    depends_on:
+      - tensorzero-gateway
+      - clickhouse
+    restart: unless-stopped
+
+volumes:
+  clickhouse_data:
